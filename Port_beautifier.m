@@ -1,5 +1,5 @@
 %% Aligning ports (Ports Abstimmung) Inports
-h1 = get_param('Simulink_Programming/sd', 'PortConnectivity');
+h1 = get_param('Simulink_Programming/SubSystem', 'PortConnectivity');
 for k = 1 : numel(h1)
     if nnz(h1(k).SrcBlock)
         n = get_param(h1(k).SrcBlock,'Name');
@@ -13,7 +13,7 @@ for k = 1 : numel(h1)
     end
 end
 %%Aligning ports (Ports Abstimmung) Outports
-h1 = get_param('Simulink_Programming/sd', 'PortConnectivity');
+h1 = get_param('Simulink_Programming/SubSystem', 'PortConnectivity');
 for k = 1 : numel(h1)
     if nnz(h1(k).DstBlock)
         n = get_param(h1(k).DstBlock,'Name');
