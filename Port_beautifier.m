@@ -1,13 +1,14 @@
 function Port_beautifier(Model, SubSystem)
 %%%%%%%%%%%%%%%%%
 % Author :  Madhan Ravi
-% Example: Port_beautifier('Simulink_Programming', 'sd')
+% Example: Port_beautifier('Simulink_Programming', 'sd') 
+% where the path to subsystem is Simulink_Programming/sd
 %%%%%%%%%%%%%%%%%
 
 %% Aligning ports (Ports Abstimmung) Inports
 h1 = get_param(fullfile(Model, SubSystem), 'PortConnectivity'); 
-for k = 1 : numel(h1)
-    if nnz(h1(k).SrcBlock)
+for k = 1 : numel([h1.SrcBlock])
+    if h1(k).SrcBlock > 0
         n = get_param(h1(k).SrcBlock,'Name');
         pos = get_param(fullfile(Model, n), 'position');
         HeighT = (-pos(2)+pos(4))/2;
@@ -19,7 +20,6 @@ for k = 1 : numel(h1)
     end
 end
 %% Aligning ports (Ports Abstimmung) Outports
-h1 = get_param(fullfile(Model, SubSystem), 'PortConnectivity');
 for k = 1 : numel(h1)
     if nnz(h1(k).DstBlock)
         n = get_param(h1(k).DstBlock,'Name');
